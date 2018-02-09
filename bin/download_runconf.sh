@@ -7,7 +7,7 @@
 #########################################################################
 #!/bin/bash
 
-git clone https://github.com/lisider/auto_conf.git ~/auto_conf
-cd ~/auto_conf/bin
+git clone https://github.com/lisider/AutoConf.git ~/AutoConf
+cd ~/AutoConf/bin
 source auto_conf.sh
 
