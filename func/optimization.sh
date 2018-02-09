@@ -13,6 +13,7 @@ source ${BINPWD}/../conf/optimization.conf
 #ATTENTION : 下面的函数都是与路径无关的
 
 Timing(){
+    echo -e "\033[32m Do $FUNCNAME ... Start\033[0m"
     echo ${PASSWD} | sudo ntpdate ${CHINANATIONALTIMESERVICECENTER}
 }
 
