@@ -15,13 +15,17 @@ source ${BINPWD}/../conf/optimization.conf
 Timing(){
     echo -e "\033[32m Do $FUNCNAME ... Start\033[0m"
     echo ${PASSWD} | sudo ntpdate ${CHINANATIONALTIMESERVICECENTER}
+    echo -e "\033[32m Do $FUNCNAME ... End\033[0m"
 }
 
 SudoWithoutPasswd(){
+    echo -e "\033[32m Do $FUNCNAME ... Start\033[0m"
     echo ${PASSWD} | sudo sed -i "\$a $USER ALL=(ALL:ALL) NOPASSWD:ALL" /etc/sudoers 
+    echo -e "\033[32m Do $FUNCNAME ... End\033[0m"
 }
 
 Samba(){
+    echo -e "\033[32m Do $FUNCNAME ... Start\033[0m"
      sudo apt-get install samba -y
 
      echo 'sudo pdbedit -a -u ${USER}' > ${ROOTDIR}/todo.sh  # 这里面需要交互
@@ -40,18 +44,24 @@ ipipopopopqru23
      sudo chmod 644 /etc/samba/smb.conf
 
      sudo /etc/init.d/smbd restart
+    echo -e "\033[32m Do $FUNCNAME ... End\033[0m"
 }
 
 
 Vsftpd(){
+    echo -e "\033[32m Do $FUNCNAME ... Start\033[0m"
      sudo apt-get install vsftpd -y
+    echo -e "\033[32m Do $FUNCNAME ... End\033[0m"
 }
 
 Nfs(){
+    echo -e "\033[32m Do $FUNCNAME ... Start\033[0m"
     sudo  apt-get install nfs-kernel-server -y
+    echo -e "\033[32m Do $FUNCNAME ... End\033[0m"
 }
 
 AutoNfs(){
+    echo -e "\033[32m Do $FUNCNAME ... Start\033[0m"
     sudo apt-get install autofs -y
 
     sudo chmod 666 /etc/auto.master
@@ -67,9 +77,11 @@ AutoNfs(){
 
     sudo /etc/init.d/autofs restart
     echo "#you need to modify /etc/auto.nfs" >> ${ROOTDIR}/todo.sh
+    echo -e "\033[32m Do $FUNCNAME ... End\033[0m"
 }
 
 Zsh(){
+    echo -e "\033[32m Do $FUNCNAME ... Start\033[0m"
      sudo apt-get install zsh -y
 
      cd ${HOME}
@@ -85,15 +97,18 @@ Zsh(){
      
      echo -e "\033[32m you need to modify Graphic interface shell through Edit -> Profile Preferences -> Gernal \033[0m""]]"
      echo -e "\033[32m you can modify the last field of /etc/passwd to /usr/bin/zsh \033[0m""]]"
+    echo -e "\033[32m Do $FUNCNAME ... End\033[0m"
 
 }
 
 
 Tmux(){
+    echo -e "\033[32m Do $FUNCNAME ... Start\033[0m"
     sudo apt-get install tmux -y
     cd ${HOME}
     git clone https://github.com/gpakosz/.tmux.git
     ln -s -f .tmux/.tmux.conf
     cp .tmux/.tmux.conf.local .
+    echo -e "\033[32m Do $FUNCNAME ... End\033[0m"
 }
 

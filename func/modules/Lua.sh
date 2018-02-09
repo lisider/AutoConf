@@ -12,26 +12,31 @@ LUAURL="https://www.lua.org/ftp/lua-5.3.4.tar.gz"
 
 
 CheckLua(){
-    local luaVersion=`lua -v|awk ' {print $2}'`
+    echo -e "\033[32m Do $FUNCNAME ... Start\033[0m"
     if [ -z $(which lua) ];then
         echo 'lua is not exist'
     else
+        local luaVersion=`lua -v|awk ' {print $2}'`
         LUACHECKED=1
         echo lua version is ${luaVersion}
     fi
+    echo -e "\033[32m Do $FUNCNAME ... End\033[0m"
 }
 
 
 DownloadLua(){
+    echo -e "\033[32m Do $FUNCNAME ... Start\033[0m"
 
     local luaPackgeName=${LUAURL##*/}
     if [ -f ${SOURCEDIR}/${luaPackgeName} ];then : ;else
         wget -P ${SOURCEDIR} ${LUAURL}
     fi
+    echo -e "\033[32m Do $FUNCNAME ... End\033[0m"
 }
 
 
 InstallLua(){
+    echo -e "\033[32m Do $FUNCNAME ... Start\033[0m"
     sudo apt-get install libreadline6-dev libreadline-dev -y #lua 需要的
 
     local luaPackgeName=${LUAURL##*/}
@@ -46,11 +51,14 @@ InstallLua(){
     make linux -C${SOURCEDIR}/${luaPath} -s
     sudo make install -C${SOURCEDIR}/${luaPath} -s
     echo done
+    echo -e "\033[32m Do $FUNCNAME ... End\033[0m"
 }
 
 
 ConfigureLua(){
+    echo -e "\033[32m Do $FUNCNAME ... Start\033[0m"
     echo configure lua ...
     echo done
+    echo -e "\033[32m Do $FUNCNAME ... End\033[0m"
 }
 

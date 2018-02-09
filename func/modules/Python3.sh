@@ -16,10 +16,11 @@ PYTHON3LOCALLIBFULLPATH=`locate libpython3 | grep -v $USER  |grep "\.so" |xargs 
 
 
 CheckPython3(){
-    local python3Version=`python3 --version|awk ' {print $2}'`
+    echo -e "\033[32m Do $FUNCNAME ... Start\033[0m"
     if [ -z ${python3Version} ];then
         echo 'Python3 is not exist'
     else
+        local python3Version=`python3 --version|awk ' {print $2}'`
         echo python verison is ${python3Version}
         if [ ${python3Version%.*} != 3.6 ] && [ ${python3Version%.*} != 3.5 ];then
             ture
@@ -27,19 +28,23 @@ CheckPython3(){
             false
         fi
     fi
+    echo -e "\033[32m Do $FUNCNAME ... End\033[0m"
 }
 
 
 DownloadPython3(){
+    echo -e "\033[32m Do $FUNCNAME ... Start\033[0m"
 
     local python3PackgeName=${PYTHON3URL##*/}
     if [ -f ${SOURCEDIR}/${python3PackgeName}  ];then : ;else
         wget -P ${SOURCEDIR} ${PYTHON3URL}
     fi
+    echo -e "\033[32m Do $FUNCNAME ... End\033[0m"
 }
 
 
 InstallPython3(){
+    echo -e "\033[32m Do $FUNCNAME ... Start\033[0m"
 
     sudo apt-get install zlibc zlib1g-dev -y
 
@@ -52,9 +57,12 @@ InstallPython3(){
     make -s
     sudo make install -s
     echo done
+    echo -e "\033[32m Do $FUNCNAME ... End\033[0m"
 }
 
 ConfigurePython3(){
+    echo -e "\033[32m Do $FUNCNAME ... Start\033[0m"
     echo configure python3 ...
     echo done
+    echo -e "\033[32m Do $FUNCNAME ... End\033[0m"
 }

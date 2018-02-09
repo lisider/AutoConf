@@ -16,10 +16,11 @@ VIMMAKEOPTION="VIMRUNTIMEDIR=/usr/share/vim/vim80"
 ########################################
 
 CheckVim(){
-    local vimVersion=`vim --version |head -1 | awk ' {print $5}'`
+    echo -e "\033[32m Do $FUNCNAME ... Start\033[0m"
     if [ -z ${vimVersion} ];then
         echo 'vim is not exist'
     else
+        local vimVersion=`vim --version |head -1 | awk ' {print $5}'`
         echo Vim version ${vimVersion}
         if [ ${vimVersion} != 8.0 ];then
             true
@@ -27,18 +28,22 @@ CheckVim(){
             false
         fi
     fi
+    echo -e "\033[32m Do $FUNCNAME ... End\033[0m"
 }
 
 
 DownloadVim(){
+    echo -e "\033[32m Do $FUNCNAME ... Start\033[0m"
 
     if [ -d ${SOURCEDIR}/vim ];then : ;else
         git clone https://github.com/vim/vim.git ${SOURCEDIR}/vim
     fi
+    echo -e "\033[32m Do $FUNCNAME ... End\033[0m"
 }
 
 
 InstallVim(){
+    echo -e "\033[32m Do $FUNCNAME ... Start\033[0m"
     local vimPath=vim
 
     echo delwithVim ...
@@ -46,11 +51,14 @@ InstallVim(){
     make ${VIMMAKEOPTION} -s
     sudo make install -s
     echo done
+    echo -e "\033[32m Do $FUNCNAME ... End\033[0m"
 }
 
 
 ConfigureVim(){
+    echo -e "\033[32m Do $FUNCNAME ... Start\033[0m"
     echo configuer Vim ...
     bash -c "$(curl -fsSL https://raw.githubusercontent.com/lisider/.vim/master/config_vim.sh)"
     echo done
+    echo -e "\033[32m Do $FUNCNAME ... End\033[0m"
 }
