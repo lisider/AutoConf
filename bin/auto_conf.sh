@@ -75,7 +75,7 @@ OptimizationSystem(){
    # Timing
     SudoWithoutPasswd
     Samba
-    vsftpd
+    Vsftpd
     Nfs
     AutoNfs
     Zsh
@@ -86,7 +86,7 @@ DoActions(){
     DoAction check
     DoAction download
 
-    PackDownload
+    #PackDownload
 
     DoAction install
     DoAction Configure

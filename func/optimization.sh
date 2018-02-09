@@ -21,9 +21,9 @@ SudoWithoutPasswd(){
 }
 
 Samba(){
-     sudo apt-get install samba
+     sudo apt-get install samba -y
 
-     sudo pdbedit -a -u ${USER} # 这里面需要交互
+     echo 'sudo pdbedit -a -u ${USER}' > ~/todo.sh  # 这里面需要交互
 
      sudo chmod 666 /etc/samba/smb.conf
 
@@ -42,16 +42,16 @@ ipipopopopqru23
 }
 
 
-Vsftp(){
-     sudo apt-get install vsftpd
+Vsftpd(){
+     sudo apt-get install vsftpd -y
 }
 
 Nfs(){
-    sudo  apt-get install nfs-kernel-server
+    sudo  apt-get install nfs-kernel-server -y
 }
 
 AutoNfs(){
-    sudo apt-get install autofs
+    sudo apt-get install autofs -y
 
     echo -----------------
     sudo chmod 666 /etc/auto.master
@@ -72,7 +72,7 @@ AutoNfs(){
 }
 
 Zsh(){
-     sudo apt-get install zsh
+     sudo apt-get install zsh -y
 
      cd ${HOME}
      sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
@@ -92,7 +92,7 @@ Zsh(){
 
 
 Tmux(){
-    sudo apt-get install tmux
+    sudo apt-get install tmux -y
     cd ${HOME}
     git clone https://github.com/gpakosz/.tmux.git
     ln -s -f .tmux/.tmux.conf

@@ -11,10 +11,10 @@
 ```c
 
 方法1
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/lisider/AutoConf/master/bin/download_runconf.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/lisider/AutoConf/master/bin/auto_conf.sh)"
 
 方法2
-bash -c "$(wget https://raw.githubusercontent.com/lisider/AutoConf/master/bin/download_runconf.sh -O -)"
+bash -c "$(wget https://raw.githubusercontent.com/lisider/AutoConf/master/bin/auto_conf.sh -O -)"
 
 ```
 
