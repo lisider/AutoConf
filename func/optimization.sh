@@ -112,3 +112,13 @@ Tmux(){
     echo -e "\033[32m Do $FUNCNAME ... End\033[0m"
 }
 
+
+Ssh(){
+
+    echo -e "\033[32m Do $FUNCNAME ... Start\033[0m"
+
+    sudo apt-get install openssh-server -y
+
+    echo -e "\033[32m Do $FUNCNAME ... End\033[0m"
+
+}

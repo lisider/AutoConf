@@ -35,50 +35,23 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/lisider/AutoConf/master/bi
 
 ```c
 
-0/
-     校时 
 
-
-1/
      sudo 免密码
 
-1/
-     vim
-          配置到vim8.0 支持lua python3
-          有时候python原机已经已经装下,但是遇到这种问题
-          475 configure:6319: checking Python's configuration directory                        
-          476 configure:6342: result:                                                          
-          477 configure:6348: result: can't find it! 
-          需要自己修复,可能重新安装python3就好了
-          但注意不要卸载python3,会出现很多依赖卸载
-          locate python |grep "\.pc$"
-          重新编译vim
-          配置 .vimrc 和一些常用的插件
+     vim 及其插件
 
+          为了安装vim插件 装了 lua 及 python3
 
-------
-下面的待完成
-
-2/
-     corntab
-          定时校时
-          定时重启网卡
-
-3/
-     配置 samba
-
-4/
-     配置 vsftp
-
-5/
-     配置 nfs
+     常见服务器
+          samba nfs ftp  ssh
 
 ```
-
 
 ## 执行的流程
 
 ```c
+
+0/   非软件安装部分
 
 1/
      解决依赖
@@ -107,5 +80,41 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/lisider/AutoConf/master/bi
 
 软件模块的依赖
      你需要考虑依赖,并写入conf/base.conf 中的 DEPENDS 变量,配置方式见 conf/base.conf
+
+```
+
+---
+
+
+##这个工程有什么问题
+
+```c
+
+脆弱,很容易就死了
+
+不能检测 本地的 lua 和 python 是否能够支持 vim ,强行安装 lua 和 python
+
+
+凌乱
+
+```
+
+
+---
+
+## 这个工程的目标
+```c
+
+配置 linux 发行版
+
+配置内容
+
+     自动校时 crontab
+
+     配置常见服务器
+
+     安装vim及其插件
+
+     能够读取配置文件,实现运行时配置 rc
 
 ```

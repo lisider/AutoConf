@@ -81,6 +81,7 @@ OptimizationSystem(){
     #Zsh
     echo "#just run Zsh in the shell" >> ${ROOTDIR}/todo.sh
     Tmux
+    Ssh
 }
 
 DoActions(){
