@@ -23,7 +23,7 @@ SudoWithoutPasswd(){
 Samba(){
      sudo apt-get install samba -y
 
-     echo 'sudo pdbedit -a -u ${USER}' > ~/todo.sh  # 这里面需要交互
+     echo 'sudo pdbedit -a -u ${USER}' > ${ROOTDIR}/todo.sh  # 这里面需要交互
 
      sudo chmod 666 /etc/samba/smb.conf
 
@@ -68,7 +68,7 @@ AutoNfs(){
     echo -----------------3
 
     sudo /etc/init.d/autofs restart
-    echo -e "\033[32m you need to modify /etc/auto.nfs \033[0m""]]"
+    echo "#you need to modify /etc/auto.nfs" >> ${ROOTDIR}/todo.sh
 }
 
 Zsh(){

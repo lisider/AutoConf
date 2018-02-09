@@ -9,7 +9,7 @@
 
 VIMDEPENDS="Lua Python3"
 
-VIMCONFIGOPTION="--with-features=huge --enable-multibyte --enable-python3interp --with-python-config-dir=${PYTHON3LOCALLIBFULLPATH%/*} --enable-luainterp --enable-gui --enable-cscope --prefix=/usr"
+VIMCONFIGOPTION="--with-features=huge --enable-multibyte --enable-python3interp --with-python-config-dir=${PYTHON3LOCALLIBFULLPATH%/*} --enable-luainterp --with-lua-prefix=/usr/local/ --enable-gui --enable-cscope --prefix=/usr"
 VIMMAKEOPTION="VIMRUNTIMEDIR=/usr/share/vim/vim80"
 
 
@@ -17,17 +17,21 @@ VIMMAKEOPTION="VIMRUNTIMEDIR=/usr/share/vim/vim80"
 
 CheckVim(){
     local vimVersion=`vim --version |head -1 | awk ' {print $5}'`
-    if [ ${vimVersion} != 8.0 ];then
-        true
+    if [ -z ${vimVersion} ];then
+        echo Vim version ${vimVersion}
+        if [ ${vimVersion} != 8.0 ];then
+            true
+        else
+            false
+        fi
     else
-        false
+        echo 'vim is not exist'
     fi
-    echo Vim version ${vimVersion}
 }
 
 
 DownloadVim(){
-    
+
     if [ -d ${SOURCEDIR}/vim ];then : ;else
         git clone https://github.com/vim/vim.git ${SOURCEDIR}/vim
     fi
@@ -37,9 +41,9 @@ DownloadVim(){
 InstallVim(){
     local vimPath=vim
 
-    cd ${SOURCEDIR}/${vimPath};./configure ${VIMCONFIGOPTION}
-    make ${VIMMAKEOPTION}
-    #sudo make install
+    cd ${SOURCEDIR}/${vimPath};./configure ${VIMCONFIGOPTION} -q
+    make ${VIMMAKEOPTION} -s
+    sudo make install -s
 }
 
 

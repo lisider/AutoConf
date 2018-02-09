@@ -13,12 +13,12 @@ LUAURL="https://www.lua.org/ftp/lua-5.3.4.tar.gz"
 
 CheckLua(){
     local luaVersion=`lua -v|awk ' {print $2}'`
-    if [ -z $(which lua) ] || [ ${luaVersion%.*} != 5.3 ];then
+    if [ -z $(which lua) ];then
         LUACHECKED=1
+        echo 'lua is not exist'
     else
-        :
+        echo lua version is ${luaVersion}
     fi
-    echo lua version is ${luaVersion}
 }
 
 
@@ -32,7 +32,7 @@ DownloadLua(){
 
 
 InstallLua(){
-    sudo apt-get install libreadline6-dev libreadline-dev #lua 需要的
+    sudo apt-get install libreadline6-dev libreadline-dev -y #lua 需要的
 
     local luaPackgeName=${LUAURL##*/}
     echo luaPackgeName :${luaPackgeName} #lua-5.3.4.tar.gz
@@ -41,9 +41,9 @@ InstallLua(){
     local luaPath=${luaPackgeName%.tar.gz}
     echo luaPath :${luaPath}
     
-    tar -xzvf ${SOURCEDIR}/${luaPackgeName}  -C ${SOURCEDIR}
-    make linux -C${SOURCEDIR}/${luaPath}
-    #sudo make install -C${SOURCEDIR}/${luaPath}
+    tar -xzf ${SOURCEDIR}/${luaPackgeName}  -C ${SOURCEDIR}
+    make linux -C${SOURCEDIR}/${luaPath} -s
+    sudo make install -C${SOURCEDIR}/${luaPath} -s
 }
 
 

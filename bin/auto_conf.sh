@@ -78,7 +78,7 @@ OptimizationSystem(){
     Vsftpd
     Nfs
     AutoNfs
-    Zsh
+    #Zsh
     Tmux
 }
 

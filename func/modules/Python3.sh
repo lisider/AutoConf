@@ -17,12 +17,16 @@ PYTHON3LOCALLIBFULLPATH=`locate libpython3 | grep -v $USER  |grep "\.so" |xargs 
 
 CheckPython3(){
     local python3Version=`python3 --version|awk ' {print $2}'`
-    if [ ${python3Version%.*} != 3.6 ] && [ ${python3Version%.*} != 3.5 ];then
-        ture
+    if [ -z ${python3Version} ];then
+        echo python verison is ${python3Version}
+        if [ ${python3Version%.*} != 3.6 ] && [ ${python3Version%.*} != 3.5 ];then
+            ture
+        else
+            false
+        fi
     else
-        false
+        echo 'Python3 is not exist'
     fi
-    echo python verison is ${python3Version}
 }
 
 
@@ -40,10 +44,10 @@ InstallPython3(){
     local python3PackgeName=${PYTHON3URL##*/}
     local python3Path=${python3PackgeName%.*}
 
-    tar -xzvf ${SOURCEDIR}/${python3PackgeName} -C ${SOURCEDIR}
-    cd ${SOURCEDIR}/${python3Path};./configure --prefix=/usr
-    make
-    #sudo make install
+    tar -xzf ${SOURCEDIR}/${python3PackgeName} -C ${SOURCEDIR}
+    cd ${SOURCEDIR}/${python3Path};./configure --prefix=/usr -q
+    make -s
+    sudo make install -s
 }
 
 ConfigurePython3(){
