@@ -41,6 +41,8 @@ DownloadPython3(){
 
 InstallPython3(){
 
+    sudo apt-get install zlibc zlib1g-dev -y
+
     local python3PackgeName=${PYTHON3URL##*/}
     local python3Path=${python3PackgeName%.*}
 
