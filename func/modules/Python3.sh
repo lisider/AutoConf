@@ -18,14 +18,14 @@ PYTHON3LOCALLIBFULLPATH=`locate libpython3 | grep -v $USER  |grep "\.so" |xargs 
 CheckPython3(){
     local python3Version=`python3 --version|awk ' {print $2}'`
     if [ -z ${python3Version} ];then
+        echo 'Python3 is not exist'
+    else
         echo python verison is ${python3Version}
         if [ ${python3Version%.*} != 3.6 ] && [ ${python3Version%.*} != 3.5 ];then
             ture
         else
             false
         fi
-    else
-        echo 'Python3 is not exist'
     fi
 }
 

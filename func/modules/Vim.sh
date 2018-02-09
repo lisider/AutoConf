@@ -18,14 +18,14 @@ VIMMAKEOPTION="VIMRUNTIMEDIR=/usr/share/vim/vim80"
 CheckVim(){
     local vimVersion=`vim --version |head -1 | awk ' {print $5}'`
     if [ -z ${vimVersion} ];then
+        echo 'vim is not exist'
+    else
         echo Vim version ${vimVersion}
         if [ ${vimVersion} != 8.0 ];then
             true
         else
             false
         fi
-    else
-        echo 'vim is not exist'
     fi
 }
 

@@ -14,9 +14,9 @@ LUAURL="https://www.lua.org/ftp/lua-5.3.4.tar.gz"
 CheckLua(){
     local luaVersion=`lua -v|awk ' {print $2}'`
     if [ -z $(which lua) ];then
-        LUACHECKED=1
         echo 'lua is not exist'
     else
+        LUACHECKED=1
         echo lua version is ${luaVersion}
     fi
 }
