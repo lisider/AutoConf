@@ -7,7 +7,7 @@
 #########################################################################
 #!/bin/bash
 
-sudo apt-get install git
+sudo apt-get install git -y
 git clone https://github.com/lisider/AutoConf.git ~/AutoConf
 cd ~/AutoConf/bin
 source auto_conf.sh
