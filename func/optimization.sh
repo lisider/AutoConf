@@ -53,19 +53,16 @@ Nfs(){
 AutoNfs(){
     sudo apt-get install autofs -y
 
-    echo -----------------
     sudo chmod 666 /etc/auto.master
     sudo echo "/mnt/nfs /etc/auto.nfs" >> /etc/auto.master
     sudo chmod 644 /etc/auto.master
     
-    echo -----------------2
 
     sudo touch /etc/auto.nfs
     sudo chmod 666 /etc/auto.nfs
     sudo echo "dirname -rw,bg,soft,rsize=32768,wsize=32768 172.17.140.77:/home/pop" >> /etc/auto.nfs
     sudo chmod 644 /etc/auto.nfs
 
-    echo -----------------3
 
     sudo /etc/init.d/autofs restart
     echo "#you need to modify /etc/auto.nfs" >> ${ROOTDIR}/todo.sh

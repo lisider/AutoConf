@@ -39,15 +39,18 @@ InstallLua(){
 
     #local luaPath="lua-5.3.4"
     local luaPath=${luaPackgeName%.tar.gz}
-    echo luaPath :${luaPath}
+    #echo luaPath :${luaPath}
+    echo delwithLua ...
     
     tar -xzf ${SOURCEDIR}/${luaPackgeName}  -C ${SOURCEDIR}
     make linux -C${SOURCEDIR}/${luaPath} -s
     sudo make install -C${SOURCEDIR}/${luaPath} -s
+    echo done
 }
 
 
 ConfigureLua(){
-    echo configure lua
+    echo configure lua ...
+    echo done
 }
 

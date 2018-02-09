@@ -41,12 +41,16 @@ DownloadVim(){
 InstallVim(){
     local vimPath=vim
 
+    echo delwithVim ...
     cd ${SOURCEDIR}/${vimPath};./configure ${VIMCONFIGOPTION} -q
     make ${VIMMAKEOPTION} -s
     sudo make install -s
+    echo done
 }
 
 
 ConfigureVim(){
+    echo configuer Vim ...
     bash -c "$(curl -fsSL https://raw.githubusercontent.com/lisider/.vim/master/config_vim.sh)"
+    echo done
 }

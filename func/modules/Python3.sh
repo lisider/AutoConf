@@ -44,12 +44,15 @@ InstallPython3(){
     local python3PackgeName=${PYTHON3URL##*/}
     local python3Path=${python3PackgeName%.*}
 
+    echo delwithPython ...
     tar -xzf ${SOURCEDIR}/${python3PackgeName} -C ${SOURCEDIR}
     cd ${SOURCEDIR}/${python3Path};./configure --prefix=/usr -q
     make -s
     sudo make install -s
+    echo done
 }
 
 ConfigurePython3(){
-    echo configure python3
+    echo configure python3 ...
+    echo done
 }

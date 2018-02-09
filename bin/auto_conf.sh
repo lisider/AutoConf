@@ -79,6 +79,7 @@ OptimizationSystem(){
     Nfs
     AutoNfs
     #Zsh
+    echo "#just run Zsh in the shell" >> ${ROOTDIR}/todo.sh
     Tmux
 }
 
